@@ -1,0 +1,8 @@
+sudo echo 17 > /sys/class/gpio/export
+sudo echo out > /sys/class/gpio/gpio17/direction
+sudo chmod a+w /sys/class/gpio/gpio17/value 
+
+#sudo echo 21 > /sys/class/gpio/export
+#sudo echo out > /sys/class/gpio/gpio21/direction
+#sudo chmod a+w /sys/class/gpio/gpio21/value 
+
