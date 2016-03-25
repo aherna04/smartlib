@@ -1,0 +1,8 @@
+######@hourly /home/pi/smartdev/ip_checkin.py
+
+@daily  /home/pi/smartdev/ip_checkin.py
+
+####* * * * * /home/pi/smartdev/ip_checkin.py # every minute
+
+#* 0,12 * * * /home/pi/smartdev/ip_checkin.py # every 6 hours
+
