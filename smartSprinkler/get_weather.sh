@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#############
+#make sure this path is set in your ENV
+#############
+mypath=`echo $smartSprinklerHome`
+
 if [ $# != 2 ]; then
         echo " How to use:"
         echo " get_weather.sh <zip or localweather code> <airport code>"
@@ -205,38 +210,38 @@ cleanup
 
 #########################################################
 
-touch /home/pi/weathertest/logs/$nanotime.log
+touch $mypath/logs/$nanotime.log
 
 echo
-echo "nanotime:$nanotime" >>/home/pi/weathertest/logs/$nanotime.log
-echo "mydate:$mydate" >>/home/pi/weathertest/logs/$nanotime.log
-echo "currentWind:$currentWind" >>/home/pi/weathertest/logs/$nanotime.log
-echo "currentHumidity:$currentHumidity" >>/home/pi/weathertest/logs/$nanotime.log
-echo "sunrise:$sunrise" >>/home/pi/weathertest/logs/$nanotime.log
-echo "sunset:$sunset" >>/home/pi/weathertest/logs/$nanotime.log
-echo "lowToday:$lowToday" >>/home/pi/weathertest/logs/$nanotime.log
+echo "nanotime:$nanotime" >>$mypath/logs/$nanotime.log
+echo "mydate:$mydate" >>$mypath/logs/$nanotime.log
+echo "currentWind:$currentWind" >>$mypath/logs/$nanotime.log
+echo "currentHumidity:$currentHumidity" >>$mypath/logs/$nanotime.log
+echo "sunrise:$sunrise" >>$mypath/logs/$nanotime.log
+echo "sunset:$sunset" >>$mypath/logs/$nanotime.log
+echo "lowToday:$lowToday" >>$mypath/logs/$nanotime.log
 
-echo "lowestTemp:$lowestTemp" >>/home/pi/weathertest/logs/$nanotime.log
-echo "highestTemp:$highestTemp" >>/home/pi/weathertest/logs/$nanotime.log
+echo "lowestTemp:$lowestTemp" >>$mypath/logs/$nanotime.log
+echo "highestTemp:$highestTemp" >>$mypath/logs/$nanotime.log
 
-echo "codeToday:$codeToday" >>/home/pi/weathertest/logs/$nanotime.log
-echo "codeTomorrow:$codeTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
-echo "codeAfterTomorrow:$codeAfterTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
+echo "codeToday:$codeToday" >>$mypath/logs/$nanotime.log
+echo "codeTomorrow:$codeTomorrow" >>$mypath/logs/$nanotime.log
+echo "codeAfterTomorrow:$codeAfterTomorrow" >>$mypath/logs/$nanotime.log
 
-echo "conditionToday:$conditionToday" >>/home/pi/weathertest/logs/$nanotime.log
-echo "conditionTomorrow:$conditionTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
-echo "conditionAfterTomorrow:$conditionAfterTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
+echo "conditionToday:$conditionToday" >>$mypath/logs/$nanotime.log
+echo "conditionTomorrow:$conditionTomorrow" >>$mypath/logs/$nanotime.log
+echo "conditionAfterTomorrow:$conditionAfterTomorrow" >>$mypath/logs/$nanotime.log
 
-#echo "rainChanceToday:$rainChanceToday" >>/home/pi/weathertest/logs/$nanotime.log
-#echo "rainChanceTomorrow:$rainChanceTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
-#echo "rainChanceAfterTomorrow:$rainChanceAfterTomorrow" >>/home/pi/weathertest/logs/$nanotime.log
+#echo "rainChanceToday:$rainChanceToday" >>$mypath/logs/$nanotime.log
+#echo "rainChanceTomorrow:$rainChanceTomorrow" >>$mypath/logs/$nanotime.log
+#echo "rainChanceAfterTomorrow:$rainChanceAfterTomorrow" >>$mypath/logs/$nanotime.log
 
-echo "windToday:$windToday" >>/home/pi/weathertest/logs/$nanotime.log
-echo "avgWinds:$avgWinds" >>/home/pi/weathertest/logs/$nanotime.log
+echo "windToday:$windToday" >>$mypath/logs/$nanotime.log
+echo "avgWinds:$avgWinds" >>$mypath/logs/$nanotime.log
 
-#echo "avgRainChance:$avgRainChance" >>/home/pi/weathertest/logs/$nanotime.log
+#echo "avgRainChance:$avgRainChance" >>$mypath/logs/$nanotime.log
 
-echo "accumulatedRain:$accumulatedRain" >>/home/pi/weathertest/logs/$nanotime.log
+echo "accumulatedRain:$accumulatedRain" >>$mypath/logs/$nanotime.log
 
 
 
@@ -261,7 +266,7 @@ echo "accumulatedRain:$accumulatedRain" >>/home/pi/weathertest/logs/$nanotime.lo
 #echo "avg rain for the week         |$avgRainChance" >>logs/$nanotime.log
 #echo "total rain in last 72 hours   |$accumulatedRain" >>logs/$nanotime.log
 
-cat /home/pi/weathertest/logs/$nanotime.log
+cat $mypath/logs/$nanotime.log
 exit
 
 

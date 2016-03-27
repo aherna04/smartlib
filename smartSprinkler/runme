@@ -1,1 +1,4 @@
-/home/pi/weathertest/get_weather.sh USFL0559 KPMP
+mypath=`echo $smartSprinklerHome`
+#/home/pi/smartlib/smartSprinkler
+$mypath/get_weather.sh USFL0559 KPMP
+#/home/pi/weathertest/get_weather.sh USFL0559 KPMP

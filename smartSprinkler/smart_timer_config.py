@@ -1,14 +1,16 @@
 ###############
 #local params
 ################
-
 zone=4
 #zoneTimes=[5,5,5,5]
 
 # tomato garden | front | side-back | fruit trees
 
+#test
+zoneTimes=[2,2,2,2]
+
 #summer
-zoneTimes=[300,450,400,180]
+#zoneTimes=[300,450,400,180]
 
 #winter
 #zoneTimes=[120,240,240,120]
@@ -22,3 +24,10 @@ zoneTimes=[300,450,400,180]
 
 #zone=2
 #zoneTimes=[3,2]
+
+################
+#RPI HW   0=don't use GPIO's
+#         1=use GPIO's
+################
+rpi=0
+

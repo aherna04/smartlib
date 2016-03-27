@@ -6,7 +6,10 @@ import time
 import os.path
 
 import smart_timer_config
-os.chdir("/home/pi/weathertest")
+#TEMP - set to ENV var
+#smartSprinklerHome
+workingDir="/home/pi/smartlib/smartSprinkler"
+os.chdir(workingDir)
 
 ###############
 #import local params
@@ -17,8 +20,10 @@ zoneTimes=smart_timer_config.zoneTimes
 ################
 #RPI HW
 ################
-rpi=1
+rpi=smart_timer_config.rpi
 
+print "HW"
+print rpi
 ################
 #general params
 ################
@@ -50,8 +55,14 @@ classvars.myZone=int(commands.getoutput('cat currentZone'))
 
 
 # read latest Log
-myLogFile=commands.getoutput('ls -1rt logs/*.log | tail -1')
-myfile=open(myLogFile)
+#TOOD: add create logs folder if missing
+try:
+	myLogFile=commands.getoutput('ls -1rt ' + workingDir + '/logs/*.log | tail -1')
+	myfile=open(myLogFile)
+except IOError:
+	print "create logs folder"
+	exit(1)
+
 
 # parse log file
 myvars = {}

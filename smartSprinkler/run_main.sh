@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/pi/weathertest
-
-/home/pi/weathertest/run_smart_timer.py
+mypath=`echo $smartSprinklerHome`
+cd $mypath
+$mypath/run_smart_timer.py
 

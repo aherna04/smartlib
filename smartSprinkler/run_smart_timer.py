@@ -7,13 +7,17 @@ import os.path
 
 import smart_timer_lib
 
-os.chdir("/home/pi/weathertest")
+#os.chdir("/home/pi/weathertest")
 
 ##########################################################################
 #main
 smart_timer_lib.checkLastRun() # print time.time()
 smart_timer_lib.checkWeekSkip()
-smart_timer_lib.checkYahooCodes()
+try:
+	smart_timer_lib.checkYahooCodes()
+except KeyError:
+	print "Oops: old log style"
+
 smart_timer_lib.checkRain()
 
 	#deprecated APIs
