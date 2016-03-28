@@ -1,0 +1,21 @@
+#not needed - only needed for relay controls
+#@reboot /home/pi/weathertest/gpio.setup
+
+#need to fix
+#@reboot /home/pi/smartdev/ip_checkin_restart.py
+
+##@hourly sudo /home/pi/smartdev/get_temperature.py
+
+
+#15 minutes
+*/15 * * * * /home/pi/smartdev/justtemp.py >> /home/pi/smartdev/temp.log 
+
+#5 minutes
+#*/5 * * * * /home/pi/smartdev/justtemp.py >> /home/pi/smartdev/temp.log 
+
+@hourly /bin/sync
+
+#reboot sunday
+30 1  *    *    7 /sbin/shutdown -r now
+
+
