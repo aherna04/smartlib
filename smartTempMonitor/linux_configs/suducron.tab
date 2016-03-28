@@ -1,17 +1,23 @@
 #not needed - only needed for relay controls
 #@reboot /home/pi/weathertest/gpio.setup
 
-#need to fix
-#@reboot /home/pi/smartdev/ip_checkin_restart.py
+@reboot /home/pi/smartdev/ip_checkin_restart.py
 
 ##@hourly sudo /home/pi/smartdev/get_temperature.py
 
 
-#15 minutes
-*/15 * * * * /home/pi/smartdev/justtemp.py >> /home/pi/smartdev/temp.log 
+#*/15 * * * * /home/pi/smartdev/get_temperature.py 
+
+#15 minutes - active -
+#*/15 * * * * /home/pi/smartdev/justtemp.py >> /home/pi/smartdev/temp.log 
+*/15 * * * *  /home/pi/smartlib/smartTempMonitor/justtemp.py >> /home/pi/smartlib/smartTempMonitor/temp.log
 
 #5 minutes
 #*/5 * * * * /home/pi/smartdev/justtemp.py >> /home/pi/smartdev/temp.log 
+
+# */1 * * * * /home/pi/smartdev/justtemp.py >> /var/tmp_ram/C_F_temp.log 
+
+# 2 * * * * /home/pi/smartdev/get_temperature_zoneb.py 
 
 @hourly /bin/sync
 

@@ -7,6 +7,9 @@ import time
 import datetime
 import gspread
 
+#TODO
+#get ENV smartTempMonHome
+mypath="/home/pi/smartlib/smartTempMonitor"
 
 email 		= 'alexman.hdz@gmail.com'   #this is your full gmail address
 password 	= 'zwtvwlypujxfmttg'        #this is your gmail password
@@ -46,7 +49,12 @@ except:
  
 # Append data
 while(loop):
-  output = subprocess.check_output(["/home/pi/smartdev/Adafruit_DHT", dht_driver, dht_gpio]);
+  try:
+  	output = subprocess.check_output([mypath + "/Adafruit_DHT", dht_driver, dht_gpio]);
+  except:
+	print "Oops: run as sudo"
+	exit(1)
+
   print output   # DEBUG
 
   matches = re.search("Temp =\s+([0-9.]+)", output)
