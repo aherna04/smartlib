@@ -183,13 +183,16 @@ def yahooCodeCheck(code):
 #check yahoo codes
 def checkYahooCodes():
     print 'today:', myvars["conditionToday"], 
-    yahooCodeCheck(int(myvars["codeToday"]))
+#TODO
+#    yahooCodeCheck(int(myvars["codeToday"]))
 
     print 'tomorrow: ', myvars["conditionTomorrow"], 
-    yahooCodeCheck(int(myvars["codeTomorrow"]))
+#TODO
+#    yahooCodeCheck(int(myvars["codeTomorrow"]))
 
     print 'aftertomorrow: ', myvars["conditionAfterTomorrow"], 
-    yahooCodeCheck(int(myvars["codeAfterTomorrow"]))
+#TODO
+#    yahooCodeCheck(int(myvars["codeAfterTomorrow"]))
 
 
 ##########################################################################

@@ -1,0 +1,2 @@
+export smartSprinklerHome=/home/pi/smartlib/smartSprinkler
+export smartTempMonHome=/home/pi/smartlib/smartTempMonitor
