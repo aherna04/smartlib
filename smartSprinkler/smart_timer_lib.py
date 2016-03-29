@@ -6,7 +6,6 @@ import time
 import os.path
 
 import smart_timer_config
-#TEMP - set to ENV var
 #smartSprinklerHome
 workingDir="/home/pi/smartlib/smartSprinkler"
 os.chdir(workingDir)

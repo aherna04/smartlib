@@ -1,5 +1,6 @@
 #log files
 smartTempMonitor/*.log
+smartSprinkler/currentZone
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
