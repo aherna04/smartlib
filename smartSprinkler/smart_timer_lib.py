@@ -121,7 +121,7 @@ def isRunning():
 def checkWeekSkip():
     if os.path.isfile("week.skip"):
        weekCheck=commands.getoutput('cat week.skip')
-       print "Found week.check file... are we in skip window?"
+       print "Found week.skip file... are we in skip window?"
        print "   currentTime: ",nanotime 
        print "   skip cycle : ",weekCheck
        if nanotime < weekCheck:

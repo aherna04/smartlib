@@ -51,12 +51,12 @@ elif [[ $myuname == 'Darwin'  ]]; then
 else // this is good enough for now.  
    webscript="wget -q -O- "
 fi
- 
-#### deal with the shell params 
+
+#### deal with the shell params
 station=$1
 airportcode=$2
 
-#### temp files 
+#### temp files
 mytempweather=/var/tmp_ram/weather.out
 mytempyahoo=/var/tmp_ram/yweather.out
 mytempyahoo2=/var/tmp_ram/yweather2.out
@@ -64,18 +64,18 @@ mytempyahoo3=/var/tmp_ram/yweather3.out
 
 check_skip_week ()
 {
-   #Check for skipper file... 
-   if [[ -f week.skip ]]; then 
+   #Check for skipper file...
+   if [[ -f week.skip ]]; then
 	   echo "***Still in skip window***"
-   
+
    else
 	if [[ $accumulatedRain > $weekSkipThreshold  ]]; then
 	   echo "***Too much rain, skipping for 1 week***"
 	   touch week.skip
 	   echo `expr $nanotime + $weekSkip` > week.skip
-	fi   
-   fi	
-   
+	fi
+   fi
+
 }
 
 generate_files ()
@@ -87,7 +87,7 @@ generate_files ()
    echo $webscript "http://xml.weather.yahoo.com/forecastrss?p=$station&u=f"
 
  #  $webscript  --max-redirs 20 "http://www.weather.com/weather/5-day/$station" > $mytempweather
- #  echo $webscript "http://www.weather.com/weather/5-day/$station" 
+ #  echo $webscript "http://www.weather.com/weather/5-day/$station"
  #  exit
 }
 
@@ -139,13 +139,13 @@ parse_yahoo ()
 	lowToday=`cat $mytempyahoo3 | grep low | head -1 | cut -d":" -f2`
 
 	echo "-----------------------------------"
-	cat $mytempyahoo3 | grep -e low 
+	cat $mytempyahoo3 | grep -e low
 	echo "-----------------------------------"
-	cat $mytempyahoo3 | grep -e high 
+	cat $mytempyahoo3 | grep -e high
 	echo "-----------------------------------"
-	cat $mytempyahoo3 | grep -e code 
+	cat $mytempyahoo3 | grep -e code
 	echo "-----------------------------------"
-	cat $mytempyahoo3 | grep -e text 
+	cat $mytempyahoo3 | grep -e text
 	echo "-----------------------------------"
 
 	conditionToday=`cat $mytempyahoo3		|grep -e text| head -1 | cut -d":" -f2`
@@ -189,7 +189,7 @@ parse_weather_com ()
 	#average winds
 	avgWinds=`cat $mytempweather | awk 'BEGIN{RS="<title>" } {print "RECORD: " $0}' | grep -v class | grep  "mph" | cut -d" " -f3  | awk '{sum+=$1} END {print (sum+0)/NR }'`
 	echo "Average winds for the week: $avgWinds"
-	echo "Average rain for the week: $avgRainChance%" 
+	echo "Average rain for the week: $avgRainChance%"
 }
 
 get_rain ()
@@ -282,7 +282,7 @@ manual test, run for 3 seconds, exit
 Type:
 Scheduled cycle
 
-if it rained 2 inches in 72 hours, skip a week. 
+if it rained 2 inches in 72 hours, skip a week.
 
 If it rained .5 inches in the last 72 hours, skip cycle
 
