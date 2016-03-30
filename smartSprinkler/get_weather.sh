@@ -3,7 +3,7 @@
 #############
 #make sure this path is set in your ENV
 #############
-mypath=`echo $smartSprinklerHome`
+mypath="/home/pi/smartlib/smartSprinkler"
 
 if [ $# != 2 ]; then
         echo " How to use:"

@@ -6,8 +6,8 @@ zone=4
 
 # tomato garden | front | side-back | fruit trees
 
-#test
-zoneTimes=[2,2,2,2]
+#temp: zone 2 is broken
+zoneTimes=[120,120,5,120]
 
 #summer
 #zoneTimes=[300,450,400,180]
@@ -29,5 +29,5 @@ zoneTimes=[2,2,2,2]
 #RPI HW   0=don't use GPIO's
 #         1=use GPIO's
 ################
-rpi=0
+rpi=1
 
