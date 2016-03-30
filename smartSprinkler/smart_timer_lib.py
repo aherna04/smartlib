@@ -26,7 +26,7 @@ print rpi
 ################
 #general params
 ################
-rainAccThreshold=.80
+rainAccThreshold=.70
 
 #--weather.com - no longer supported --#
 #rainChanceTodayThreshold=50
@@ -82,6 +82,8 @@ def checkLastRun():
 ##########################################################################
 #write active zone to file to track state
 def updateZone():
+    #TODO
+    #SKIP IF rpi == 0
     classvars.myZone=(classvars.myZone+1)%zone
     myoutput=commands.getoutput('echo %s > currentZone' % classvars.myZone)
     #print "current zone now:", classvars.myZone
@@ -184,15 +186,15 @@ def checkYahooCodes():
     print 'today:', myvars["conditionToday"], 
 #TODO
 #    yahooCodeCheck(int(myvars["codeToday"]))
-
+    print
     print 'tomorrow: ', myvars["conditionTomorrow"], 
 #TODO
 #    yahooCodeCheck(int(myvars["codeTomorrow"]))
-
+    print
     print 'aftertomorrow: ', myvars["conditionAfterTomorrow"], 
 #TODO
 #    yahooCodeCheck(int(myvars["codeAfterTomorrow"]))
-
+    print
 
 ##########################################################################
 #check wind conditions
