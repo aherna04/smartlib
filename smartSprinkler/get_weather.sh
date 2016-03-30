@@ -44,9 +44,10 @@ weekSkip=604800
 #### figure out if we need curl or wget ####
 myuname=`uname`
 if [[ $myuname == 'Linux'  ]]; then
-   webscript="curl --stderr /dev/null --basic --url"
+   webscript="curl --url "
+#--stderr /dev/null --basic --url"
 elif [[ $myuname == 'Darwin'  ]]; then
-   webscript="curl --stderr /dev/null --basic --url"
+   webscript="curl --url "
 else // this is good enough for now.  
    webscript="wget -q -O- "
 fi
@@ -79,8 +80,11 @@ check_skip_week ()
 
 generate_files ()
 {
-   $webscript "http://weather.yahooapis.com/forecastrss?p=$station" > $mytempyahoo
-   echo  $webscript "http://weather.yahooapis.com/forecastrss?p=$station"
+#   $webscript $mytempyahoo "--url http://weather.yahooapis.com/forecastrss?p=$station"
+#   echo $webscript $mytempyahoo "--url http://weather.yahooapis.com/forecastrss?p=$station" 
+
+   $webscript "http://xml.weather.yahoo.com/forecastrss?p=$station&u=f" > $mytempyahoo
+   echo $webscript "http://xml.weather.yahoo.com/forecastrss?p=$station&u=f"
 
  #  $webscript  --max-redirs 20 "http://www.weather.com/weather/5-day/$station" > $mytempweather
  #  echo $webscript "http://www.weather.com/weather/5-day/$station" 
@@ -92,9 +96,9 @@ print_header ()
    echo $mydate
    cat $mytempyahoo | awk 'BEGIN{FS="<title>";}{print $2}' | grep Conditions | cut -d"<" -f1
 
-   #current Conditions
-   $webscript "http://xml.weather.yahoo.com/forecastrss?p=$station&u=f" | grep -E '(Current Conditions:|F<BR)' | sed -e 's/Current Conditions://' -e 's/<br \/>//' -e 's/<b>//' -e 's/<\/b>//' -e 's/<BR \/>//' -e 's///' -e 's/<\/description>//'
-   echo "-----------------------------------"
+#   #current Conditions
+#   $webscript "http://xml.weather.yahoo.com/forecastrss?p=$station&u=f" | grep -E '(Current Conditions:|F<BR)' | sed -e 's/Current Conditions://' -e 's/<br \/>//' -e 's/<b>//' -e 's/<\/b>//' -e 's/<BR \/>//' -e 's///' -e 's/<\/description>//'
+#   echo "-----------------------------------"
 }
 
 cleanup ()
@@ -111,9 +115,10 @@ parse_yahoo ()
 	#use weather.com for rain and wind
 
 	#1st parse of yahoo RSS Feed - find the fields
-	cat $mytempyahoo | awk 'BEGIN{RS="yweather:" } {print "RECORD: " $0}' | grep RECORD | egrep -e location -e wind -e atmosphere -e astronomy -e code | cut -d" " -f2- | cut -d"/" -f1 > $mytempyahoo2
+	cat $mytempyahoo | awk 'BEGIN{RS="yweather:" } {print "RECORD: " $0}' | grep RECORD | egrep -e location \
+	-e wind -e atmosphere -e astronomy -e code | cut -d" " -f2- | cut -d"/" -f1 > $mytempyahoo2
 
-	#2nd pass of yahoo RSS Feed - print the sunrise/sunset, humidity, and current winds
+	 #2nd pass of yahoo RSS Feed - print the sunrise/sunset, humidity, and current winds
 	 #the wind will be used to skip sprinkler cycle if too windy
 	 #the sunset and sunrise times can be used to set schedule markers... sunset+4 hrs, etc
 	cat $mytempyahoo2 | cut -d" " -f2- | sed -e 's/"\ /"\n/g' -e 's/^ *//g' -e 's/\"//g'| awk 'BEGIN{FS="=";OFS="|";}{print $1,$2}' | grep  -v day | grep -v ^\| | grep -v date | grep -v text | sed 's/^ *//g' | grep -e sun -e humi -e speed
