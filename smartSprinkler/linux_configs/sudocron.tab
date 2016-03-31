@@ -21,7 +21,7 @@
 # 
 # m h  dom mon dow   command
 
-MAIL="alexman.hdz@gmail.com"
+# MAIL="alexman.hdz@gmail.com"
 
 #needed for relay controls
 @reboot /home/pi/smartlib/smartSprinkler/linux_configs/gpio.setup

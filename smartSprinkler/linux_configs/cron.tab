@@ -27,7 +27,7 @@ MAILTO=""
 # (0-59)  (0-23)     (1-31)    (1-12 or Jan-Dec)  (0-6 or Sun-Sat)                
 
 #gets the weather stats 2x a day
-# 0   6,18,21,22   *   *    0-6           /home/pi/smartlib/smartSprinkler/runme 
+ 0          6,18,0         *             *               0-6           /home/pi/smartlib/smartSprinkler/runme 
 
 # runs the full cycle
  15         21           *             *	       0,1,2,4       /home/pi/smartlib/smartSprinkler/run_smart_timer.py | tee -a /home/pi/smartlib/smartSprinkler/runtime.log
