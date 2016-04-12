@@ -1,10 +1,13 @@
-# smartlib
+## smartlib
 
 # contains rpi code for 
-# -smartTempMonitor
-# -smartSprinkler
+## -smartTempMonitor
+## -smartSprinkler
+## -smartPool
 
 Revisions
+#V4.0 	- Add smartPool
+#V3.5.4 - timer tuneups
 #V3.5.3 - cleanup old files
 #V3.5.2 - typos in scripts, adjust readme's
 #V3.5.1 - Tweak weather scripts
