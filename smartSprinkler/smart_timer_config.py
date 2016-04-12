@@ -7,13 +7,13 @@ zone=4
 # tomato garden | front | side-back | fruit trees
 
 #temp: zone 2 is broken
-zoneTimes=[120,120,5,120]
+#zoneTimes=[120,120,5,120]
 
 #summer
 #zoneTimes=[300,450,400,180]
 
 #winter
-#zoneTimes=[120,240,240,120]
+zoneTimes=[120,240,240,120]
 
 
 #zone=10

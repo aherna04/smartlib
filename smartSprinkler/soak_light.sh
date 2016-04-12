@@ -1,21 +1,21 @@
 #!/bin/bash
 
-#zones shoule be 90 for light soak
-cd /home/pi/weathertest
+#zones should be 90 for light soak
+cd /home/pi/smartlib/smartSprinkler
 
-/home/pi/weathertest/run_zone.py 0 60
+#./run_zone.py 0 110
 #110
 sleep 8
 
-/home/pi/weathertest/run_zone.py 1 60
+./run_zone.py 1 110
 #110
 sleep 8
 
-/home/pi/weathertest/run_zone.py 2 60
+./run_zone.py 2 90
 #90
 sleep 8
 
-/home/pi/weathertest/run_zone.py 3 60
+./run_zone.py 3 80
 #80
 sleep 2
 
