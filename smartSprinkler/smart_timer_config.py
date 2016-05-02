@@ -2,20 +2,19 @@
 #local params
 ################
 zone=4
-#zoneTimes=[5,5,5,5]
 
 # tomato garden | front | side-back | fruit trees
 
-#temp: zone 2 is broken
-#zoneTimes=[120,120,5,120]
-
 #summer
-#zoneTimes=[300,450,400,180]
+zoneTimes=[400,500,500,240]
 
 #winter
-zoneTimes=[120,240,240,120]
+#zoneTimes=[220,400,400,220]
 
 
+###################
+# example configs
+##################
 #zone=10
 #zoneTimes=[10,5,3,2,1,2,3,4,5,6]
 
